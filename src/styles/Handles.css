@@ -1,0 +1,54 @@
+.pipe-node-left {
+    left: 0px !important;
+    top: 52% !important;
+}
+.pipe-node-right {
+    right: 1px !important;
+    top: 52% !important;
+}
+
+.pump-node-left{
+    left: -4px !important;
+    top: 48% !important;
+}
+.pump-node-right{
+    right: -3px !important;
+    top: 15% !important;
+}
+.fortyfive_degree_bend-node-top {
+    left: 82% !important;
+    top: 5px !important;
+}
+
+.tee-node-left {
+    top: 56% !important;
+    left: -1px !important;
+
+}
+.tee-node-right {
+    right: 0px !important;
+    top: 56% !important;
+}
+.tee-node-top {
+    top: 1px !important;
+}
+
+
+.valve-node-left{
+    left: -1px !important;
+    top: 50% !important;
+}
+.valve-node-right{
+    top: 50% !important;
+}
+
+.ninety_degree_bend-node-bottom{
+    left: 26px !important;
+    bottom: 3px !important;
+    /* top: 2% !important; */
+}
+.ninety_degree_bend-node-right{
+    right: 4px !important;
+    top: 32% !important;
+    /* top: 2% !important; */
+}

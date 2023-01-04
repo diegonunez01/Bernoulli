@@ -1,0 +1,83 @@
+.pipe-node{
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 100px;
+    height: 73px;
+    background-image: url(../../public/parts_icons/pipe.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-bottom: 20px;
+    background-position: center;
+    /* width: 50%; */
+}
+.valve-node{
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 100px;
+    height: 85px;
+    background-image: url(../../public/parts_icons/valve.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+.fortyfive_degree_bend-node{
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 50px;
+    height: 65px;
+    background-image: url(../../public/parts_icons/fortyfive_degree-bend.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+
+.fortyfive_degree_bend-handle-top{
+    left: 90px;
+    top: -8px
+    /* width: 50%; */
+}
+.ninety_degree_bend-node{
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    background-image: url(../../public/parts_icons/ninety_degree-bend.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* rotate: 180deg; */
+}
+.tee-node{
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    background-image: url(../../public/parts_icons/tee.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.pump-node{
+    background-image: url(../../public/parts_icons/pump.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    width: 100px;
+    height: 100px;
+    /* display: inline-block; */
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    position: fill;
+
+    /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); */
+    /* clip-path: polygon(30% 0%, 70% 0%, 98% 47%, 53% 79%, 70% 100%, 30% 100%, 50% 79%, 0 48%); */
+    /* background-image: url */
+    /* font-size: 12; */
+    /* color: 'black';
+    line-height: 1.5;
+    padding-top: 10;
+    align-content: 'center'; */
+
+}
