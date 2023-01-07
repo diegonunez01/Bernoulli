@@ -1,18 +1,25 @@
 import { ButtonGroup, Button } from "react-bootstrap"
 import { useState } from "react"
 import { FluidPartTypes } from "./fluid_parts/FluidPartTypes"
-import { fluidForms } from "./fluid_parts/fluidForms"
+import { fluidForms } from "./FluidForms"
 
 function Fluid() {
-    const [currentForm, setCurrentForm] = useState(FluidPartTypes.NONE);
+    const [currentFormType, setCurrentFormType] = useState(FluidPartTypes.NONE);
     const [currentFormData, setCurrentFormData] = useState({});
     const [validationErrorMessage, setValidationErrorMessage] = useState("");
+    
 
-    const forms={MODIFY: 'modifyFluid', SAVED: 'savedFluids', NONE: 'None'}
+    const addNewRow = () => {
+        console.log("add new row")
+    }
+    const deleteRow = () => {
+        console.log("delete row")
+    }
+    const forms={MODIFY: 'modifyFluid', SAVED: 'savedFluids', NONE: 'NONE'}
     const fluidMetadata={
         modifyFluid: {
             form_title: 'Modify Fluid',
-            form_description: 'Modify Fluid',
+            form_description: 'This tab allows you to modify the fluid properties',
             form: fluidForms.MODIFY
             },
         savedFluids: {
@@ -23,30 +30,36 @@ function Fluid() {
     }
 
     const closeForm = () => {
-        setCurrentForm(forms.NONE);
+        setCurrentFormType(forms.NONE);
         setCurrentFormData({}); 
+        
     }
     const getCurrentForm = () => {
-        if (currentForm === forms.NONE) {
+        console.log(currentFormType)
+        if (currentFormType === forms.NONE) {
             return <></>;}
-        return(
+        return( 
             <div>
-            <h4> {fluidMetadata[currentForm].form_title} </h4>
-            <p> {fluidMetadata[currentForm].form_description} </p>
-            { fluidMetadata[currentForm].form(formOnChange) }
+            <h4> {fluidMetadata[currentFormType].form_title} </h4>
+            <p> {fluidMetadata[currentFormType].form_description} </p>
+            { fluidMetadata[currentFormType].form(formOnChange) }
         </div>
+
             )
         }
     
-    const modifyFluid = () => {
-        setCurrentForm(forms.MODIFY)
-    }
-    const savedFluids = () => {
-        setCurrentForm(forms.SAVED)
-    }
-    const handleNewFluidCreation = () => {
-    }
 
+    const handleNewFluidCreation = (e) => {
+        e.preventDefault();
+        
+
+    }
+    const setTab = (type) => {
+        
+        setCurrentFormType(type);
+        setCurrentFormData({'type': type});
+        return;
+    }
     const checkFormValidation = {
     }
     const formOnChange = (e) => {
@@ -70,7 +83,6 @@ function Fluid() {
             setCurrentFormData({ ...currentFormData, [e.target.id]: e.target.value });
         }
         setValidationErrorMessage("");
-        console.log(currentFormData)
     }
     
 
@@ -79,18 +91,19 @@ function Fluid() {
             <ButtonGroup aria-label="Fluid Options">
                 <Button 
                 variant="secondary"
-                onClick={modifyFluid}>Modify Fluid</Button>
+                onClick={() => setTab(forms.MODIFY)}>Modify Fluid</Button>
                 <Button 
                 variant="secondary"
-                onClick={savedFluids}>Saved Fluids</Button>
+                onClick={() => setTab(forms.SAVED)}>Saved Fluids</Button>
             </ButtonGroup>
+        
          <br/>
 
         <div className="form_container">
             {getCurrentForm()}
             {validationErrorMessage && <p style={{ marginTop: '3px', color: 'red' }}>{validationErrorMessage}</p>}
             
-            {!validationErrorMessage && checkFormValidation[currentForm] && <Button
+            {!validationErrorMessage && checkFormValidation[currentFormType] && <Button
                 variant="outline-success"
                 className="addNewElement"
                 onClick={handleNewFluidCreation}
@@ -98,7 +111,7 @@ function Fluid() {
             >
                 Add New Element
             </Button>}
-            {currentForm!==FluidPartTypes.NONE && <Button onClick={closeForm}
+            {currentFormType!==FluidPartTypes.NONE && <Button onClick={closeForm}
             style={{ marginTop: '10px' }}
             variant="outline-secondary"> Close </Button>}
         </div>

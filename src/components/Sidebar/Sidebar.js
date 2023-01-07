@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import '../styles/Sidebar.css';
+import '../../styles/Sidebar.css';
 import { Row, Col, Button, Form, ButtonGroup } from 'react-bootstrap';
-import {data_types, FluidPartTypes} from './fluid_parts/FluidPartTypes.js';
-import {FluidPartMetadata} from './fluid_parts/FluidPartMetadata.js';
-import { fluid_data_types } from './fluid_parts/FluidPartTypes.js';
-import { handleNewNodeCreation } from './node_renderer/HandleNodeCreation';
+import {data_types, FluidPartTypes} from '../fluid_parts/FluidPartTypes.js';
+import {FluidPartMetadata} from '../fluid_parts/FluidPartMetadata.js';
+import { fluid_data_types } from '../fluid_parts/FluidPartTypes.js';
+import { handleNewNodeCreation } from '../node_renderer/HandleNodeCreation';
 function Sidebar(props) {
     const [currentForm, setCurrentForm] = useState(FluidPartTypes.NONE);
     const [currentFormData, setCurrentFormData] = useState({});
@@ -15,8 +15,7 @@ function Sidebar(props) {
         FITTING: 1+1,
         PUMP: 2+1,
     }
-    console.log(dataLength[currentForm])
-    console.log(Object.keys(currentFormData).length)
+
     const setTab = (type) => {
         
         setCurrentForm(type);
@@ -27,8 +26,6 @@ function Sidebar(props) {
         setCurrentForm(FluidPartTypes.NONE);
         setCurrentFormData({}); 
     }
-    console.log(currentForm)
-    console.log(currentFormData)
     const checkFormValidation = {
         PIPE:  (
             Object.keys(currentFormData).length === dataLength[currentForm] && 

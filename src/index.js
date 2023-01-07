@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import ReactFlowComponent from './components/ReactFlowComponent';
-import Sidebar from './components/Sidebar.js';
-import Fluid  from './components/Fluid';
+import Sidebar from './components/Sidebar/Sidebar.js';
+import SidebarFluid  from './components/SidebarFluid';
 import { useCallback } from 'react';
 import { Container, Row, Col, Modal } from 'react-bootstrap';
 import { nodeTypes } from './components/node_renderer/Nodes.js';
@@ -11,6 +11,7 @@ import { FluidPartForms } from './components/fluid_parts/FluidPartForms';
 import { fluid_data_types } from './components/fluid_parts/FluidPartTypes';
 import { FluidPartTypes } from './components/fluid_parts/FluidPartTypes';
 import { NodeModifications } from './NodeModifications';
+import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 
 import ReactFlow, { 
   useNodesState,
@@ -56,7 +57,7 @@ function MainComponent() {
               onConnect={onConnect}
             />
           </Col>
-    
+{/*     
           <Col sm={3}>
             <Row>
               <Sidebar
@@ -65,9 +66,28 @@ function MainComponent() {
               />
             </Row>
             <Row>
-              <Fluid
+              <SidebarFluid
               />
             </Row>
+          </Col> */}
+
+          <Col sm={3}>
+            <Tabs>
+              <TabList>
+                <Tab>Parts</Tab>
+                <Tab>Fluids</Tab>
+              </TabList>
+              <TabPanel>
+                <Sidebar
+                  nodes={nodes}
+                  setNodes={setNodes}
+                />
+              </TabPanel>
+              <TabPanel>
+                <SidebarFluid
+                />
+              </TabPanel>
+            </Tabs>
           </Col>
         </Row>
       </NodeSelectionContext.Provider>
