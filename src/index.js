@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import ReactFlowComponent from './components/ReactFlowComponent';
 import Sidebar from './components/Sidebar/Sidebar.js';
-import SidebarFluid  from './components/SidebarFluid';
+import SidebarFluid  from './components/Sidebar/SidebarFluid';
 import { useCallback } from 'react';
 import { Container, Row, Col, Modal } from 'react-bootstrap';
 import { nodeTypes } from './components/node_renderer/Nodes.js';

@@ -1,9 +1,9 @@
 
 import { useState } from 'react'
-import {Button, ButtonGroup, Col, Form, Row} from 'react-bootstrap'
-import {CreateFluidMixture} from './Forms/CreateFluidMixture'
-import {DeleteFluidMixture} from './Forms/DeleteFluidMixture'
-import {SavedMixtureList} from './SavedMixtureList'
+import {Button, ButtonGroup, Col, Form, Row, Container} from 'react-bootstrap'
+import CreateFluidMixture from './Forms/CreateFluidMixture'
+import DeleteFluidMixture from './Forms/DeleteFluidMixture'
+import {SavedMixtureList} from './Forms/SavedMixtureList'
 
 
 
@@ -11,13 +11,10 @@ function SidebarFluid(props) {
     const [savedMixtures, setSavedMixtures] = useState([])
     const [saveModalShow, setSaveModalShow] = useState(false)
     const [deleteModalShow, setDeleteModalShow] = useState(false)
-    console.log(saveModalShow)
+    // console.log(saveModalShow)
 
     const handleCreateMixture = () => {
-        setSaveModalShow(True)
-        
-
-
+        setSaveModalShow(true)
     }
 
     const handleDeleteMixture = () => {
@@ -28,7 +25,7 @@ function SidebarFluid(props) {
         // big container with two buttons on the bottom and a list of saved fluids on the top
         <div>
             <Container>
-                <CreateFluidMixture show={saveModalShow}/>
+                <CreateFluidMixture saveModalShow={saveModalShow} setSaveModalShow={setSaveModalShow}/>
                 <DeleteFluidMixture show={deleteModalShow}/>
             </Container>
             <Row>
