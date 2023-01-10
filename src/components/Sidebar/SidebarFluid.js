@@ -18,8 +18,36 @@ function SidebarFluid(props) {
 
     
     // console.log(saveModalShow)
-    const formOnChange = (e) => {
+    const formOnChange =  (e,removedRows) => {
         e.preventDefault()
+
+        // Validate Input
+        if (e.target.getAttribute('type') === "number") {
+            // Enforce e.target.value is parsable number
+            if (isNaN(Number(e.target.value))) {
+                setValidationErrorMessage("Please enter a number");
+                return;
+            }
+    
+            if (Number(e.target.value) < 0) {
+                setValidationErrorMessage("Please enter a positive number");
+                return;
+            }
+
+            setCurrentFormData({ ...currentFormData, [e.target.id]: Number(e.target.value) });
+        } else {
+            if (e.target.value == "") {
+                setValidationErrorMessage("Can not be an empty string");
+                return;
+            }
+            
+            setCurrentFormData({ ...currentFormData, [e.target.id]: e.target.value });
+            //End Result: {Row_1: {'fluid_name': 'Water', 'fluid_percentage': '50}}
+        }   
+        setValidationErrorMessage("");
+        // setCurrentFormData(Object.keys(currentFormData).filter((item) => removedRows!=item.split('_')[-1] ))
+        console.log(Object.keys(currentFormData).filter
+    
     }
     const handleCreateMixture = () => {
         setSaveModalShow(true)
