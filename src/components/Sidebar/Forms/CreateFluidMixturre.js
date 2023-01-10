@@ -35,6 +35,7 @@ const NewRow = (id,onChangeFn, deleteRow) =>{
 }
 const CreateFluidMixture = (onChangeFn,previousData) => {
     const [rowNumbers, setRowNumbers]= useState(1)
+    
 
     const handleNewRowClick = (e) => {
         setRowNumbers(rowNumbers+1)
