@@ -3,13 +3,18 @@ import React, { useCallback } from 'react';
 import { Button, Modal, Form, Col, Row, Container,InputGroup } from 'react-bootstrap';
 import {useState} from 'react';
 
-const NewRow = (id,onChangeFn, deleteRow) =>{
-        
+const NewRow = ({id,onChangeFn, deleteRow,removedRows}) =>{
+    const handleDeleteRow = (e) => {
+        deleteRow(id)
+    }
+    const handleOnChange = (e) => {
+        onChangeFn(e,removedRows)
+    }
     return(
         <Form.Group as={Row} className='mb-3'>
             <Col>
                 <Form.Select 
-                onChange={onChangeFn} 
+                onChange={handleOnChange} 
                 id={'fluid_name_'+id}> 
                     <option>Fluid Name</option>
                     <option>Water</option>
@@ -19,13 +24,13 @@ const NewRow = (id,onChangeFn, deleteRow) =>{
             </Col>
             <Col>
                 <Form.Control
-                onChange={onChangeFn}
-                id={'fluid_percentage'+id}
+                onChange={handleOnChange}
+                id={'fluid_percentage_'+id}
                 type='number'
                 placeholder='Fluid Percentage'
                 />
             </Col>   
-            <Col> <Button onClick={deleteRow(id)}> X </Button></Col>
+            <Col> <Button onClick={handleDeleteRow}> X </Button></Col>
             
                 
         </Form.Group>
@@ -35,21 +40,24 @@ const NewRow = (id,onChangeFn, deleteRow) =>{
 }
 const CreateFluidMixture = (onChangeFn,previousData) => {
     const [rowNumbers, setRowNumbers]= useState(1)
-
+    const [removedRows, setRemovedRows]=useState([])  
+    var visibleRows = [...Array(rowNumbers).keys()].filter(e => !removedRows.includes(e))
+   
     const handleNewRowClick = (e) => {
         setRowNumbers(rowNumbers+1)
     }
     const deleteRow = (id) => {
-        console.log(id)
+        setRemovedRows([...removedRows,id])
     }
 
-
+    // Option 1: Rerender whole form with rows shifted up
+    // Option 2: Cross out row but leave visible
     return(
         <Form className='form_input'>
-            {[...Array(rowNumbers)].map((e,i) => {return(
-                <NewRow id={i} onChangeFn={onChangeFn} key={i}/>
+            {visibleRows.map((id) => {return(
+                <NewRow id={id} onChangeFn={onChangeFn} key={id} deleteRow={deleteRow} removedRow={removedRows}/>
             )})}
-            <Button onClick={handleNewRowClick}> New Row </Button>
+            <Button onClick={handleNewRowClick}> New Fluid </Button>
         </Form>
     )
 }
