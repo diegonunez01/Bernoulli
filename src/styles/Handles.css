@@ -52,3 +52,23 @@
     top: 32% !important;
     /* top: 2% !important; */
 }
+
+.rotate-ccw{
+
+    background-image: url(../../public/parts_icons/rotate_ccw.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    right: 4px !important;
+    top: 32% !important;
+}
+
+.rotate-cw{
+
+    background-image: url(../../public/parts_icons/rotate_cw.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: 4px !important;
+    top: 32% !important;
+}
+

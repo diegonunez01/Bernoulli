@@ -4,10 +4,12 @@ import { Button, Modal, Form, Col, Row, Container,InputGroup } from 'react-boots
 import {useState} from 'react';
 
 const NewRow = ({id,onChangeFn, deleteRow,removedRows}) =>{
+    console.log(removedRows)
     const handleDeleteRow = (e) => {
         deleteRow(id)
     }
     const handleOnChange = (e) => {
+
         onChangeFn(e,removedRows)
     }
     return(
@@ -40,14 +42,15 @@ const NewRow = ({id,onChangeFn, deleteRow,removedRows}) =>{
 }
 const CreateFluidMixture = (onChangeFn,previousData) => {
     const [rowNumbers, setRowNumbers]= useState(1)
-    const [removedRows, setRemovedRows]=useState([])  
-    var visibleRows = [...Array(rowNumbers).keys()].filter(e => !removedRows.includes(e))
-   
+    const [removedRows, setRemovedRows] = useState([])
+    const visibleRows = [...Array(rowNumbers).keys()].filter((id) => !removedRows.includes(id))
+    
     const handleNewRowClick = (e) => {
         setRowNumbers(rowNumbers+1)
     }
     const deleteRow = (id) => {
         setRemovedRows([...removedRows,id])
+        console.log(removedRows)
     }
 
     // Option 1: Rerender whole form with rows shifted up
@@ -55,7 +58,7 @@ const CreateFluidMixture = (onChangeFn,previousData) => {
     return(
         <Form className='form_input'>
             {visibleRows.map((id) => {return(
-                <NewRow id={id} onChangeFn={onChangeFn} key={id} deleteRow={deleteRow} removedRow={removedRows}/>
+                <NewRow id={id} onChangeFn={onChangeFn} key={id} deleteRow={deleteRow} removedRows={removedRows}/>
             )})}
             <Button onClick={handleNewRowClick}> New Fluid </Button>
         </Form>
