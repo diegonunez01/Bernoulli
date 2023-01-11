@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Bernoulli calculator
+
+This project can help you build a system of pipes, fittings, and tanks.
+
+Following the system build, you can get stats at the different parts.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
