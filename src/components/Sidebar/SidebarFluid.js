@@ -15,6 +15,7 @@ function SidebarFluid(props) {
     const [validationErrorMessage, setValidationErrorMessage] = useState("")
     const [currentFormData, setCurrentFormData] = useState({})
     const [currentForm, setCurrentForm]=useState(null)
+    const [totalPercentage,setTotalPercentage]=useState(null)
 
     
     // console.log(saveModalShow)
@@ -45,9 +46,8 @@ function SidebarFluid(props) {
             //End Result: {Row_1: {'fluid_name': 'Water', 'fluid_percentage': '50}}
         }   
         setValidationErrorMessage("");
-        // setCurrentFormData(Object.keys(currentFormData).filter((item) => removedRows!=item.split('_')[-1] ))
-        console.log(Object.keys(currentFormData).filter
-    
+        // setCurrentFormData(currentFormData.filter((item) => removedRows!=item.key.split('_').at(-1)))
+        setCurrentFormData(Object.fromEntries(Object.entries(currentFormData).filter(([key]) => !removedRows.includes(key.split('_').at(-1)))))
     }
     const handleCreateMixture = () => {
         setSaveModalShow(true)
